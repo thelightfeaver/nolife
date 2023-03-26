@@ -6,9 +6,9 @@ from scenes.batttlescene import BattleScene
 class Game:
     def __init__(self) -> None:
         pygame.init()
-        self.initialization()
+        self.setup()
 
-    def initialization(self):
+    def setup(self):
         pygame.display.set_caption("Zombie Shooter")
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self.clock = pygame.time.Clock()

@@ -1,24 +1,19 @@
 import pygame
-from settings import *
 
 from sprites.player import Player
 
 
-class BattleScene():
-    def __init___(self):
+class BattleScene:
+    def __init__(self):
         self.screen = pygame.display.get_surface()
-        self.player_sprite = pygame.sprite.GroupSingle()
-        self.player_sprite.add(Player())
-        
-
+        self.player_sprite = pygame.sprite.GroupSingle(Player())
 
     def run(self):
-        self.draw()
-        self.collision()
+        self._draw()
+        # self._collision()
 
-    def draw(self):
+    def _draw(self):
         self.player_sprite.draw(self.screen)
         self.player_sprite.update()
 
-    def collision(self):
-        pass
+   
