@@ -9,28 +9,41 @@ class Player(pygame.sprite.Sprite):
         self.image.fill((0, 255, 0))
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH // 2, HEIGHT // 2)
-        self.bullets = MAX_BULLETS
-        self.score = 0
+        self.direction = pygame.math.Vector2()
+        self.speed = 3
 
     def update(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
-            self.rect.move_ip(-1,0)
-        if keys[pygame.K_RIGHT]:
-            self.rect.move_ip(1, 0 )
-        if keys[pygame.K_UP]:
-            self.rect.move_ip(0,-1)
-        if keys[pygame.K_DOWN]:
-            self.rect.move_ip(0,1)
 
-        if self.rect.left < 0:
-            self.rect.left = 0
-        if self.rect.right > WIDTH:
-            self.rect.right = WIDTH
-        if self.rect.top < 0:
-            self.rect.top = 0
-        if self.rect.bottom > HEIGHT:
-            self.rect.bottom = HEIGHT
+        if keys[pygame.K_LEFT]:
+            self.direction.x = -1
+        elif keys[pygame.K_RIGHT]:
+            self.direction.x = 1
+        else:
+            self.direction.x = 0
+
+
+
+        if keys[pygame.K_UP]:
+            self.direction.y = -1
+        elif keys[pygame.K_DOWN]:
+            self.direction.y = 1
+        else:
+            self.direction.y = 0
+
+
+        if self.direction.magnitude() != 0:
+            self.direction = self.direction.normalize()
+        self.rect.center += self.direction * self.speed
+        # Old colission
+        # if self.rect.left < 0:
+        #     self.rect.left = 0
+        # if self.rect.right > WIDTH:
+        #     self.rect.right = WIDTH
+        # if self.rect.top < 0:
+        #     self.rect.top = 0
+        # if self.rect.bottom > HEIGHT:
+        #     self.rect.bottom = HEIGHT
 
     def shoot(self):
         pass
