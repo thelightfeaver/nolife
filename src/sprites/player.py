@@ -58,7 +58,3 @@ class Player(pygame.sprite.Sprite):
                         self.rect.right = sprite.rect.left
                     if self.direction.x < 0:
                         self.rect.left = sprite.rect.right
-                    
-
-    def shoot(self):
-        pass
