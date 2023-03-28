@@ -1,6 +1,7 @@
 import pygame
-from settings import *
+
 from scenes.batttlescene import BattleScene
+from settings import *
 
 
 class Game:
@@ -15,21 +16,22 @@ class Game:
         self.battle = BattleScene()
 
     def run(self):
+
         running = True
+
         while running:
+
             self.clock.tick(FPS)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-                
 
             self.screen.fill("white")
             self.battle.run()
             pygame.display.update()
 
-        
         pygame.quit()
-
 
 if __name__ == "__main__":
     g = Game()
