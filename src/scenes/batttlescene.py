@@ -1,5 +1,6 @@
 import pygame
 from customs.camera import CameraGroup
+from sprites.enemy import Enemy
 
 from sprites.player import Player
 from sprites.block import Block
@@ -32,10 +33,12 @@ class BattleScene:
                     Block((x, y), [self.visible_sprite, self.obtacles_sprite])
                 elif col_value == "P":
                     self.player = Player((x,y), [self.visible_sprite], self.obtacles_sprite)
-        
+                elif col_value == "E":
+                    Enemy((x , y), [self.visible_sprite])
+    
     def run(self):
         self._draw()
 
     def _draw(self):
         self.visible_sprite.custom_draw(self.player)
-        self.visible_sprite.update()
+        self.visible_sprite.update(player = self.player)

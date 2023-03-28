@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = pos
         self.direction = pygame.math.Vector2()
-        self.speed = 3
+        self.speed = 10
         self.obtacles = obtacles
 
     def _input(self):
@@ -39,11 +39,12 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.direction.y * speed
         self._collision('V')
 
-    def update(self):
+    def update(self, *args, **kwargs):
         self._input()
         self._move(self.speed)
         
     def _collision(self, orientation = "V" or "H"):
+        
         if orientation == "V":
             for sprite in self.obtacles:
                 if sprite.rect.colliderect(self.rect):
@@ -51,6 +52,7 @@ class Player(pygame.sprite.Sprite):
                         self.rect.bottom = sprite.rect.top
                     if self.direction.y < 0:
                         self.rect.top = sprite.rect.bottom
+        
         if orientation == "H":
             for sprite in self.obtacles:
                 if sprite.rect.colliderect(self.rect):
