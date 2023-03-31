@@ -1,19 +1,16 @@
 import pygame
 
-from settings import BULLET_SPEED
-
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((10, 10))
-        self.image.fill((255, 255, 0))
-        self.rect = self.image.get_rect()
-        self.rect.centerx = x
-        self.rect.centery = y
-        self.speed = BULLET_SPEED
+    def __init__(self, origin, target, groups):
+        super().__init__(groups)
+        self.image = pygame.surface.Surface((10, 10))
+        self.image.fill((255, 0, 0))
+        self.rect = self.image.get_rect(center = origin)
+        self.speed = 10
+        self.direction = pygame.math.Vector2(target) - pygame.math.Vector2(origin)
+        self.direction = self.direction.normalize()
 
-    def update(self):
-        self.rect.y -= self.speed
-        if self.rect.bottom < 0:
-            self.kill() 
+    def update(self, *args, **kwargs):
+        self.rect.x += self.direction.x * self.speed
+        self.rect.y += self.direction.y * self.speed
