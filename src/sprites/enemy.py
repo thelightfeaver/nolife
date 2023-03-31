@@ -8,7 +8,7 @@ class Enemy(pygame.sprite.Sprite):
         self.image = pygame.surface.Surface((50,50))
         self.image.fill((255,50,0))
         self.rect = self.image.get_rect(center=pos)
-        self.speed = random.randint(2, 6)
+        self.speed = random.randint(1, 2)
         
     def update(self, *args, **kwargs ):
         if kwargs["player"]:
