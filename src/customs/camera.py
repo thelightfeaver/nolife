@@ -1,7 +1,6 @@
 import pygame 
 
 
-
 class CameraGroup(pygame.sprite.Group):
     def __init__(self) -> None:
         super().__init__()
@@ -10,12 +9,9 @@ class CameraGroup(pygame.sprite.Group):
         self.offset = pygame.math.Vector2(50, 50)
         self.half_screen = pygame.math.Vector2(self.screen.get_width() // 2, self.screen.get_height() // 2)
 
-
     def custom_draw(self, player):
 
         self.offset = player.rect.center - self.half_screen
-        # self.offset.x = player.rect.centerx - self.half_screen["width"]
-        # self.offset.y = player.rect.centery - self.half_screen["hight"]
         
         for sprite in self.sprites():
 
