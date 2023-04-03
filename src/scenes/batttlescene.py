@@ -54,7 +54,7 @@ class BattleScene:
     def _input(self):
         if pygame.mouse.get_pressed()[0]:
             mouse_pos = pygame.mouse.get_pos()
-            Bullet(self.player.rect.center, mouse_pos, [self.visible_sprite, self.bullets_sprite])
+            Bullet(self.player.rect.center, mouse_pos + self.visible_sprite.offset, [self.visible_sprite, self.bullets_sprite])
    
     def _colission(self):
         
