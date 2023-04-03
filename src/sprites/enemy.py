@@ -9,6 +9,7 @@ class Enemy(pygame.sprite.Sprite):
         self.image.fill((255,50,0))
         self.rect = self.image.get_rect(center=pos)
         self.speed = random.randint(1, 2)
+        self._hp = 50
         
     def update(self, *args, **kwargs ):
         if kwargs["player"]:
@@ -25,3 +26,10 @@ class Enemy(pygame.sprite.Sprite):
             self.rect.y += self.speed
         elif self.rect.y > target_y:
             self.rect.y -= self.speed
+
+    def get_damage(self, at):
+        self._hp -= at
+        print(self._hp)
+        if self._hp <= 0:
+            print("Enemy died" )
+            self.kill()

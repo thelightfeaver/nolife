@@ -37,7 +37,7 @@ class BattleScene:
                     Block((x, y), [self.visible_sprite, self.obtacles_sprite])
                 elif col_value == "P":
                     self.player = Player((x,y), [self.visible_sprite], self.obtacles_sprite)
-                elif col_value == "e":
+                elif col_value == "E":
                     Enemy((x , y), [self.visible_sprite, self.enemies_sprite])
     
     def run(self):
@@ -48,8 +48,6 @@ class BattleScene:
     def _draw(self):
         self.visible_sprite.custom_draw(self.player)
         self.visible_sprite.update(player = self.player)
-        # self.bullets_sprite.draw(self.screen)
-        # self.bullets_sprite.update()
 
     def _input(self):
         if pygame.mouse.get_pressed()[0]:
@@ -57,8 +55,7 @@ class BattleScene:
             Bullet(self.player.rect.center, mouse_pos + self.visible_sprite.offset, [self.visible_sprite, self.bullets_sprite])
    
     def _colission(self):
-        
-        hits = pygame.sprite.groupcollide(self.enemies_sprite, self.bullets_sprite, True, True)
+        hits = pygame.sprite.groupcollide(self.enemies_sprite, self.bullets_sprite, False, False)
         
         for hit in hits:
-            hit.kill()
+            hit.get_damage(5)
