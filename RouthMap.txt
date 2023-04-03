@@ -1,0 +1,17 @@
+Sprint 1
+
+[x] Create Player
+[x] Create enemy
+[x] Create camera
+[x] Create maps
+[x] Create bullets
+[x] Desappear bullets
+[x] SpawMonster
+[] collision bettween player and enemy
+[] UI Health, Money 
+[] Item 
+
+Sprint 2
+[] Create sprite for game
+[] System upgrade 
+[] System animate
