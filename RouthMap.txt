@@ -10,6 +10,7 @@ Sprint 1
 [x] collision bettween player and enemy
 [x] UI Health
 [x] drop Money 
+[] use pylint 
 [] Items 
 [] chore: bettermen code and import
 [] bug: fix hitbox bullet, players, enemy
