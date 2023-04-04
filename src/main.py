@@ -10,7 +10,7 @@ class Game:
         self.setup()
 
     def setup(self):
-        pygame.display.set_caption("Zombie Shooter")
+        pygame.display.set_caption("No Life")
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self.clock = pygame.time.Clock()
         self.battle = BattleScene()
