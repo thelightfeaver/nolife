@@ -1,5 +1,6 @@
-import pygame
 import random
+
+import pygame
 
 
 class Enemy(pygame.sprite.Sprite):
@@ -29,7 +30,5 @@ class Enemy(pygame.sprite.Sprite):
 
     def get_damage(self, at):
         self._hp -= at
-        print(self._hp)
         if self._hp <= 0:
-            print("Enemy died" )
             self.kill()
