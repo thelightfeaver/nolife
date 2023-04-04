@@ -7,7 +7,7 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.surface.Surface((10, 10))
         self.image.fill((255, 0, 0))
         self.rect = self.image.get_rect(center = origin)
-        self.speed = 10
+        self.speed = 15
         self.direction = pygame.math.Vector2(target) - pygame.math.Vector2(origin)
         self.direction = self.direction.normalize()
 
