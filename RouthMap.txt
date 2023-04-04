@@ -7,9 +7,12 @@ Sprint 1
 [x] Create bullets
 [x] Desappear bullets
 [x] SpawMonster
-[] collision bettween player and enemy
-[] UI Health, Money 
-[] Item 
+[x] collision bettween player and enemy
+[x] UI Health
+[x] drop Money 
+[] Items 
+[] chore: bettermen code and import
+[] bug: fix hitbox bullet, players, enemy
 
 Sprint 2
 [] Create sprite for game
