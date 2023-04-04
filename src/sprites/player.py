@@ -6,14 +6,14 @@ from settings import *
 from sprites.bullet import Bullet
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos,groups, obtacles: pygame.sprite.Sprite):
+    def __init__(self, pos,groups, obtacles):
         super().__init__(groups)
         self.image = pygame.Surface((50, 50))
         self.image.fill((0, 255, 0))
         self.rect = self.image.get_rect()
         self.rect.center = pos
         self.direction = pygame.math.Vector2()
-        self.speed = 5
+        self.speed = 9
         self.obtacles = obtacles
         self.time_recharge = time.time()
         self.time_invulnerable = time.time()
@@ -21,6 +21,7 @@ class Player(pygame.sprite.Sprite):
         self.ready_invulnerable = True
         self._hp = 100
         self._died = False
+        self._value = 0
 
     def _input(self):
         keys = pygame.key.get_pressed()
@@ -98,3 +99,9 @@ class Player(pygame.sprite.Sprite):
     def reset_recharge(self):
         self.time_recharge = time.time()
         self.ready_recharge = False
+
+    def set_coin(self, coin_value):
+        self._value += coin_value
+
+    def get_coin(self):
+        return self._value

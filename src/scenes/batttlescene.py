@@ -21,6 +21,7 @@ class BattleScene:
         self.bullets_sprite = pygame.sprite.Group()
         self.enemies_sprite = pygame.sprite.Group()
         self.obtacles_sprite = pygame.sprite.Group()
+        self.coin_sprite = pygame.sprite.Group()
         self.visible_sprite = CameraGroup()
 
         # Create Player
@@ -30,7 +31,7 @@ class BattleScene:
         self.create_map()
 
         # Spawn Enemy
-        self.spawn_enemy(5)
+        self.spawn_enemy(10)
         
     def create_map(self):
         for row_index, row_value in enumerate(TITLE_MAPS):
@@ -48,14 +49,16 @@ class BattleScene:
         for _ in range(count):   
             Enemy((random.randint(100, WIDTH - 100), 
                    random.randint(100, HEIGHT - 100)), 
-                   [self.visible_sprite, self.enemies_sprite])
+                   [self.visible_sprite, self.enemies_sprite],
+                   [self.visible_sprite, self.coin_sprite])
 
     def run(self):
         self._draw()
         self._input()
         self._colission()
         draw_text(self.screen, f"HP: {self.player.get_hp()}", 20, (WIDTH - 100, 10))
-       
+        draw_text(self.screen, f"Coins: {self.player.get_coin()}", 20, (WIDTH - 100, 30))
+
     def _draw(self):
         # Draw all sprites
         self.visible_sprite.custom_draw(self.player)
@@ -86,3 +89,10 @@ class BattleScene:
         # Collision between player and enemies
         if pygame.sprite.spritecollide(self.player, self.enemies_sprite, False):
             self.player.get_damage(5)
+
+        # Collision between player and coin
+        coins = pygame.sprite.spritecollide(self.player, self.coin_sprite, True)
+        
+        # Get coin
+        for coin in coins:
+            self.player.set_coin(coin.value)

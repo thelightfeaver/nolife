@@ -2,15 +2,18 @@ import random
 
 import pygame
 
+from sprites.coin import Coin
+
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, pos:set(), groups) -> None:
+    def __init__(self, pos:set(), groups, spriteGroupItem) -> None:
         super().__init__(groups)
         self.image = pygame.surface.Surface((50,50))
         self.image.fill((255,50,0))
         self.rect = self.image.get_rect(center=pos)
         self.speed = random.randint(1, 2)
-        self._hp = 50
+        self._hp = 25
+        self.spriteGroupItems = spriteGroupItem
         
     def update(self, *args, **kwargs ):
         if kwargs["player"]:
@@ -31,4 +34,5 @@ class Enemy(pygame.sprite.Sprite):
     def get_damage(self, at):
         self._hp -= at
         if self._hp <= 0:
+            Coin(self.rect.center, 10, None, self.spriteGroupItems)
             self.kill()
