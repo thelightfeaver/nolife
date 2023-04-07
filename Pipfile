@@ -5,5 +5,7 @@ name = "pypi"
 
 [packages]
 pygame-ce = "*"
+pylint = "*"
+black = "*"
 
 [dev-packages]
