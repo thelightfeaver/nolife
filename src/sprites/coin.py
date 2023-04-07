@@ -1,7 +1,9 @@
-import pygame 
+"""Coin class for the game."""
+import pygame
 
 
 class Coin(pygame.sprite.Sprite):
+    """Coin class for the game."""
     def __init__(self, pos, value, image, groups):
         super().__init__(groups)
         self.image = pygame.surface.Surface((5, 5))
